@@ -19,6 +19,7 @@ export default class News extends Component {
 
 
         console.log(articles['urlToImage'])
+        console.log(articles['url'])
 
         return (
             <>
