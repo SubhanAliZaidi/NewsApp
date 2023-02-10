@@ -10,12 +10,14 @@ export default class Newsitems extends Component {
                 <div className="my-4">
                     <div className="card mx-3" style={{ width: '18rem' }}>
                         <div className="text-center">
-                            <img className="img-fluid mt-3" src={imageUrl} alt="preview" style={{width:'276px', height:'180px'}} />
+                            <img className="img-fluid mt-3" src={imageUrl} alt="preview" style={{ width: '276px', height: '180px' }} />
                         </div>
                         <div className="card-body">
                             <h5 className="card-title">{title}</h5>
                             <p className="card-text">{description}</p>
-                            <a href={url} className="btn btn-sm btn-success">Read More</a>
+                            <button className="container-fluid" style={{border:'none',backgroundColor:'transparent'}}>
+                                <a href={url} className="btn btn-sm btn-success">Read More</a>
+                            </button>
                         </div>
                     </div>
                 </div>
