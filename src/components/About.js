@@ -20,7 +20,7 @@ export default function About() {
                                     <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores.</p>
                                     <div className="btn-bar">
                                         <button className="btn btn-primary" href="/">Download CV</button>
-                                        <button className="btn btn-primary mx-3" href="/">View All Work</button>
+                                        <a className="btn btn-primary mx-3" href="https://github.com/subhan-bot">View All Work</a>
                                     </div>
                                 </div>
                             </div>

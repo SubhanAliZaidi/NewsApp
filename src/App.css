@@ -1,0 +1,50 @@
+:root {
+	--bg-color: #212529;
+	--fg-color: #ffffff;
+}
+
+body{
+    overflow-x: hidden;
+}
+
+.darktheme {
+	background-color: var(--bg-color);
+	color: var(--fg-color);
+}
+
+.blurbg{
+    width: 99vw;
+    height: 100vh;
+    position: absolute;
+    z-index: -2;
+    /* background-color: ; */
+    backdrop-filter: blur(20px);
+
+}
+
+.themeimage{
+    animation: anim 1.5s;
+}
+@keyframes anim {
+    100% {
+        transform: rotate(1080deg);
+    }
+}
+.themeimage2{
+    animation: anim1 1.5s;
+}
+@keyframes anim1 {
+    100%{
+        transform: rotate(-1080deg);
+    }
+}
+#circle{
+    width: 100px;
+    height: 100px;
+    background: red;
+    position: absolute;
+    z-index: -5;
+    left:-50%;
+    right: -50%;
+    border-radius: 50%;
+}
