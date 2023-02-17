@@ -15,6 +15,9 @@ export function themechange(){
     if (rs.getPropertyValue('--bg-color') === 'white') {
         r.style.setProperty('--bg-color', '#212529')
         r.style.setProperty('--fg-color', 'white')
+        r.style.setProperty('--cardshadow-color', '#141414')
+        r.style.setProperty('--cardshadow-color2', '#9f9f9f')
+        r.style.setProperty('--button-shadow', '#1d1d1d')
         themeimage.src = 'assets/icon/sun.png';
         themeimage.classList.add('themeimage');
         themeimage.classList.remove('themeimage2');
@@ -22,6 +25,9 @@ export function themechange(){
     } else {
         r.style.setProperty('--bg-color', 'white')
         r.style.setProperty('--fg-color', 'black')
+        r.style.setProperty('--cardshadow-color', 'white')
+        r.style.setProperty('--cardshadow-color2', 'white')
+        r.style.setProperty('--button-shadow', 'white')
         themeimage.src = 'assets/icon/moon.png';
         themeimage.classList.add('themeimage2');
         themeimage.classList.remove('themeimage');
