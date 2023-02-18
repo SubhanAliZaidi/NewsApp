@@ -4,7 +4,7 @@ export default function Footer(props) {
     return (
         <>
             <hr className='mt-5' />
-            <div className="container">
+            <div className="container pb-5">
                 <footer className=" container page-footer font-small cyan darken-3">
                     <p className="container d-flex align-item-center justify-content-center">Contact Us</p>
                     <div className="container">
