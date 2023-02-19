@@ -16,7 +16,7 @@ export function themechange(){
         r.style.setProperty('--button-shadow', '#1d1d1d')
         r.style.setProperty('--cardshadow-color2', '#9f9f9f')
         r.style.setProperty('--cardshadow-color', '#141414')
-        r.style.setProperty('--logo-color', '#eaeaea')
+        r.style.setProperty('--logo-color', '#e1e1e1')
         r.style.setProperty('--blend-mode', 'color-dodge')
         r.style.setProperty('--bg-color', 'black')
         r.style.setProperty('--fg-color', 'white')
