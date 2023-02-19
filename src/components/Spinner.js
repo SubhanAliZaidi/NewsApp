@@ -5,7 +5,7 @@ export default class Spinner extends Component {
   render() {
     return (
       <div className='d-flex justify-content-center align-items-center'>
-        <img src={gif} alt="loading......" width='50px'/>
+        <img src={gif} alt="loading......" width='45px'/>
       </div>
     )
   }

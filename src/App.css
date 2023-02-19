@@ -1,78 +1,109 @@
 :root {
-	--bg-color: #212529;
-	--fg-color: #ffffff;
-    --cardshadow-color:#141414;
-    --cardshadow-color2:#9f9f9f;
-    --button-shadow:#1d1d1d;
+	--button-shadow: #1d1d1d;
+	--cardshadow-color: #141414;
+	--cardshadow-color2: #9f9f9f;
+	--bg-color: #000000;
+	--fg-color: white;
+    --logo-color:#eaeaea;
+    --blend-mode : color-dodge;
 }
 
-body{
-    overflow-x: hidden;
-}
-
-.darktheme {
+body {
+	overflow-x: hidden;
 	background-color: var(--bg-color);
 	color: var(--fg-color);
 }
 
-.themeimage{
-    animation: anim 1.5s;
+.darktheme {
+	background-color: transparent;
+	color: var(--fg-color);
+}
+
+.themeimage {
+	animation: anim 1.5s;
 }
 
 @keyframes anim {
-    100% {
-        transform: rotate(1080deg);
-    }
+	100% {
+		transform: rotate(1080deg);
+	}
 }
 
-.themeimage2{
-    animation: anim1 1.5s;
+.themeimage2 {
+	animation: anim1 1.5s;
 }
 
 @keyframes anim1 {
+	100% {
+		transform: rotate(-1080deg);
+	}
+}
+
+.cardshadow {
+	box-shadow: 1px 1px 5px var(--cardshadow-color),
+		0px 0px 0px var(--cardshadow-color2);
+	border-radius: 12px;
+}
+
+.imgradius {
+	/* box-shadow: 8px 11px 14px #141414, 0px 0px 0px #9f9f9f; */
+	border-radius: 12px;
+}
+
+.buttonradius {
+	/* box-shadow:8px 11px 14px var(--button-shadow), -5px -10px 14px var(--button-shadow); */
+	border-radius: 8px;
+}
+
+.buttoncss {
+	display: flex;
+	justify-content: flex-end;
+	background-color: transparent;
+	border: none;
+}
+
+.name {
+	font-size: 35px;
+	position: absolute;
+	letter-spacing: 5px;
+	z-index: -2;
+	top: 15px;
+	left: 17px;
+	/* color: rgb(255, 210, 210); */
+	color: var(--logo-color);
+	pointer-events: none;
+	user-select: none;
+	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+		"Lucida Sans", Arial, sans-serif;
+	width: 100%;
+	height: 100%;
+	mix-blend-mode: var(--blend-mode);
+}
+
+#circle {
+	width: 200px;
+	background-image: linear-gradient(#ff00ff, #00ffff);
+	aspect-ratio: 1;
+	position: absolute;
+	z-index: -4;
+	left: 50%;
+	right: 50%;
+	translate: -50% -50%;
+	border-radius: 50%;
+	animation: rotate 3s linear infinite;
+}
+
+.blurfg {
+	width: 100%;
+	height: 4775px;
+	position: absolute;
+	backdrop-filter: blur(100px);
+	z-index: -3;
+	background-color: transparent;
+}
+
+@keyframes rotate {
     100%{
-        transform: rotate(-1080deg);
+        transform: rotate(360deg);
     }
-}
-
-#circle{
-    width: 100px;
-    height: 100px;
-    background: red;
-    position: absolute;
-    z-index: -3;
-    left:-50%;
-    right: -50%;
-    border-radius: 50%;
-}
-
-.blurbg{
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    backdrop-filter: blur(20px);
-    z-index: -2;
-    background-color: transparent;
-}
-
-.cardshadow{
-    box-shadow: 1px 1px 5px var(--cardshadow-color), 0px 0px 0px var(--cardshadow-color2);
-    border-radius: 12px;
-}
-
-.imgradius{
-    /* box-shadow: 8px 11px 14px #141414, 0px 0px 0px #9f9f9f; */
-    border-radius: 12px;
-}
-
-.buttonradius{
-    box-shadow:8px 11px 14px var(--button-shadow), -5px -10px 14px var(--button-shadow);
-    border-radius: 8px;
-}
-
-.buttoncss{
-    display: flex;
-    justify-content: flex-end;
-    background-color: transparent;
-    border: none;
 }

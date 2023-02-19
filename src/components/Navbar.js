@@ -10,7 +10,7 @@ export default class Navbar extends Component {
         return (
             <>
                 <nav className="navbar navbar-expand-lg darktheme mt-0">
-                    <Link className="navbar-brand darktheme text-primary" style={{ fontSize: '35px', fontWeight: '500' }} to="/">{title}</Link>
+                    <Link className="navbar-brand darktheme" style={{ fontSize: '35px', fontWeight: '500',color:'transparent' }} to="/">{title}</Link>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>

@@ -19,10 +19,10 @@ export default class News extends Component {
         pageSize: PropTypes.number,
     }
 
-    capitalize = (Naziya) =>{
+    capitalize = (Naziya) => {
         return Naziya.charAt(0).toUpperCase() + Naziya.slice(1)
     }
-    
+
     constructor(props) {
         super(props);
         console.log('hello Naziya')
@@ -32,7 +32,7 @@ export default class News extends Component {
             pagenumber: 1,
             array: []
         }
-        document.title = `${this.capitalize(this.props.category) === 'General'?'Home':this.capitalize(this.props.category)} - Nazloop`
+        document.title = `${this.capitalize(this.props.category) === 'General' ? 'Home' : this.capitalize(this.props.category)} - Nazloop`
     }
 
     async componentDidMount() {
@@ -47,6 +47,15 @@ export default class News extends Component {
         this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false, array: arr })
     }
 
+    async componentDidUpdate(){
+        let bdy = document.querySelector('#root')
+        let heig = bdy.offsetHeight
+        let blurfg = document.querySelector('.blurfg')
+        console.log('this is scroll height', heig)
+        console.log(blurfg)
+        blurfg.style.height = `${heig}px`
+    }
+
     previousButton = async () => {
         const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=43889aab3ab7429296b748a62e431f32&page=${this.state.pagenumber - 1}&pageSize=${this.props.pageSize}`;
         this.setState({ loading: true })
@@ -57,19 +66,18 @@ export default class News extends Component {
 
     nextButton = async () => {
         const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=43889aab3ab7429296b748a62e431f32&page=${this.state.pagenumber + 1}&pageSize=${this.props.pageSize}`;
-        this.setState({ loading: true })
+        this.setState({ loading: true });
         let data = await fetch(url);
         let parsedData = await data.json();
         this.setState({ articles: parsedData.articles, pagenumber: this.state.pagenumber + 1, loading: false })
     }
 
-    pageButton = /*async*/ (elements) => {
-        console.log(elements)
-        // const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=43889aab3ab7429296b748a62e431f32&page=${pageNumber}&pageSize=${this.props.pageSize}`;
-        // this.setState({ loading: true })
-        // let data = await fetch(url);
-        // let parsedData = await data.json();
-        // this.setState({ articles: parsedData.articles, loading: false })
+    pageButton = async (pageNumber) => {
+        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=43889aab3ab7429296b748a62e431f32&page=${pageNumber}&pageSize=${this.props.pageSize}`;
+        this.setState({ loading: true })
+        let data = await fetch(url);
+        let parsedData = await data.json();
+        this.setState({ articles: parsedData.articles, loading: false, pagenumber: pageNumber })
     }
 
     render() {
@@ -97,7 +105,7 @@ export default class News extends Component {
 
                         {this.state.array.map((elements) => {
                             return <>
-                                <button className="btn btn-primary" onClick={this.pageButton(elements)}>{elements}</button>
+                                <button className="btn btn-primary" onClick={() => this.pageButton(elements)}>{elements}</button>
                             </>
                         })}
 
