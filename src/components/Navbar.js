@@ -18,28 +18,28 @@ export default class Navbar extends Component {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav m-auto darktheme">
                             <li className="nav-item active">
-                                <Link className="nav-link darktheme" style={{ fontSize: '18px' }} to="/">Home<span className="sr-only">(current)</span></Link>
+                                <Link className="nav-link testing darktheme" style={{ fontSize: '18px' }} to="/"><span>Home</span><span className="sr-only">(current)</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link darktheme" style={{ fontSize: '18px' }} to="/Business">Business</Link>
+                                <Link className="nav-link testing1 darktheme" style={{ fontSize: '18px' }} to="/Business"><span>Business</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link darktheme" style={{ fontSize: '18px' }} to="/Science">Science</Link>
+                                <Link className="nav-link testing darktheme" style={{ fontSize: '18px' }} to="/Science"><span>Science</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link darktheme" style={{ fontSize: '18px' }} to="/Health">Health</Link>
+                                <Link className="nav-link testing1 darktheme" style={{ fontSize: '18px' }} to="/Health"><span>Health</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link darktheme" style={{ fontSize: '18px' }} to="/Sports">Sports</Link>
+                                <Link className="nav-link testing darktheme" style={{ fontSize: '18px' }} to="/Sports"><span>Sports</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link darktheme" style={{ fontSize: '18px' }} to="/Technology">Technology</Link>
+                                <Link className="nav-link testing1 darktheme" style={{ fontSize: '18px' }} to="/Technology"><span>Technology</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link darktheme" style={{ fontSize: '18px' }} to="/Entertainment">Entertainment</Link>
+                                <Link className="nav-link testing darktheme" style={{ fontSize: '18px' }} to="/Entertainment"><span>Entertainment</span></Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link darktheme" style={{ fontSize: '18px' }} to="/About">{about}</Link>
+                                <Link className="nav-link testing darktheme" style={{ fontSize: '18px' }} to="/About"><span>{about}</span></Link>
                             </li>
                         </ul>
                     </div>

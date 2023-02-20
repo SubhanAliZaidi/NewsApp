@@ -107,3 +107,47 @@ body {
         transform: rotate(360deg);
     }
 }
+
+.topLoadingBar{
+    position: fixed;
+    background-color: red;
+    height: 3px;
+    z-index: 9999;
+    /* top: 0px; */
+    /* left: 0px; */
+    width: 20%;
+    transition: width 1s;
+}
+
+.badgecss{
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    right: 0;    
+    top: -10px;
+}
+
+.testing:hover{
+    color: #00ffff;
+    transition: all 500ms;
+}
+.testing1:hover{
+    color: #ff00ff;
+    transition: all 500ms;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

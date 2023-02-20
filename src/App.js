@@ -6,6 +6,7 @@ import Navbar from './components/Navbar';
 import News from './components/News';
 import Footer from './components/Footer';
 import About from './components/About'
+import Loading from './components/Loading'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 export function themechange(){
@@ -44,6 +45,7 @@ export default class App extends Component {
         return (
             <>
                 <Router>
+                    <Loading/>
                     <Navbar themechange={themechange} />
                     <Routes>
                         <Route exact path="/" element={<News key='general' category='general'/>} />

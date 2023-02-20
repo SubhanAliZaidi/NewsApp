@@ -36,40 +36,67 @@ export default class News extends Component {
     }
 
     async componentDidMount() {
+        let topLoadingBar = document.querySelector('.topLoadingBar')
         const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=43889aab3ab7429296b748a62e431f32&page=${this.state.pagenumber}&pageSize=${this.props.pageSize}`;
+        topLoadingBar.style.width = '10%'
         this.setState({ loading: true })
         let data = await fetch(url);
+        topLoadingBar.style.width = '50%'
         let parsedData = await data.json();
+        topLoadingBar.style.width = '70%'
         let arr = [];
         for (let i = 1; i < Math.ceil(this.state.totalResults / this.props.pageSize) + 1; i++) {
             arr.push(i)
         }
         this.setState({ articles: parsedData.articles, totalResults: parsedData.totalResults, loading: false, array: arr })
+        topLoadingBar.style.width = '100%'
+        setTimeout(() => {
+            topLoadingBar.style.display = 'none';
+            topLoadingBar.style.width = '0%'
+        }, 1500);
     }
 
-    async componentDidUpdate(){
+    async componentDidUpdate() {
         let bdy = document.querySelector('#root')
         let heig = bdy.offsetHeight
         let blurfg = document.querySelector('.blurfg')
-        console.log('this is scroll height', heig)
-        console.log(blurfg)
         blurfg.style.height = `${heig}px`
     }
 
     previousButton = async () => {
+        let topLoadingBar = document.querySelector('.topLoadingBar')
         const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=43889aab3ab7429296b748a62e431f32&page=${this.state.pagenumber - 1}&pageSize=${this.props.pageSize}`;
+        topLoadingBar.style.display = 'block'
+        topLoadingBar.style.width = '10%'
         this.setState({ loading: true })
         let data = await fetch(url);
+        topLoadingBar.style.width = '50%'
         let parsedData = await data.json();
+        topLoadingBar.style.width = '70%'
         this.setState({ articles: parsedData.articles, pagenumber: this.state.pagenumber - 1, loading: false })
+        topLoadingBar.style.width = '100%'
+        setTimeout(() => {
+            topLoadingBar.style.display = 'none';
+            topLoadingBar.style.width = '0%'
+        }, 1500);
     }
 
     nextButton = async () => {
+        let topLoadingBar = document.querySelector('.topLoadingBar')
         const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=43889aab3ab7429296b748a62e431f32&page=${this.state.pagenumber + 1}&pageSize=${this.props.pageSize}`;
+        topLoadingBar.style.display = 'block'
+        topLoadingBar.style.width = '10%'
         this.setState({ loading: true });
         let data = await fetch(url);
+        topLoadingBar.style.width = '50%'
         let parsedData = await data.json();
+        topLoadingBar.style.width = '70%'
         this.setState({ articles: parsedData.articles, pagenumber: this.state.pagenumber + 1, loading: false })
+        topLoadingBar.style.width = '100%'
+        setTimeout(() => {
+            topLoadingBar.style.display = 'none';
+            topLoadingBar.style.width = '0%'
+        }, 1500);
     }
 
     pageButton = async (pageNumber) => {
