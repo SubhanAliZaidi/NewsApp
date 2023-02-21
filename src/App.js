@@ -40,23 +40,24 @@ export function themechange(){
 }
 
 export default class App extends Component {
+
+    apiKey = process.env.REACT_APP_NEWS_API
     render() {
-        
         return (
             <>
                 <Router>
                     <Loading/>
                     <Navbar themechange={themechange} />
                     <Routes>
-                        <Route exact path="/" element={<News key='general' category='general'/>} />
-                        <Route exact path="/Home" element={<News key='home' category='general'/>} />
-                        <Route exact path="/Business" element={<News key='business' category='business' />} />
-                        <Route exact path="/Science" element={<News key='science' category='science' />} />
-                        <Route exact path="/Health" element={<News key='health' category='health' />} />
-                        <Route exact path="/Sports" element={<News key='sports' category='sports' />} />
-                        <Route exact path="/Technology" element={<News key='technology' category='technology' />} />
-                        <Route exact path="/Entertainment" element={<News key='entertainment' category='entertainment' />} />
-                        <Route exact path="/About" element={<About />} />
+                        <Route exact path="/" element={<News key='general' apiKey={this.apiKey} category='general'/>} />
+                        <Route exact path="/Home" element={<News key='home' apiKey={this.apiKey} category='general'/>} />
+                        <Route exact path="/Business" element={<News key='business' apiKey={this.apiKey} category='business' />} />
+                        <Route exact path="/Science" element={<News key='science' apiKey={this.apiKey} category='science' />} />
+                        <Route exact path="/Health" element={<News key='health' apiKey={this.apiKey} category='health' />} />
+                        <Route exact path="/Sports" element={<News key='sports' apiKey={this.apiKey} category='sports' />} />
+                        <Route exact path="/Technology" element={<News key='technology' apiKey={this.apiKey} category='technology' />} />
+                        <Route exact path="/Entertainment" element={<News key='entertainment' apiKey={this.apiKey} category='entertainment' />} />
+                        <Route exact path="/About" element={<About key='about'/>} />
                     </Routes>
                     <Footer />
                 </Router>

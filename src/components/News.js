@@ -35,9 +35,33 @@ export default class News extends Component {
         document.title = `${this.capitalize(this.props.category) === 'General' ? 'Home' : this.capitalize(this.props.category)} - Nazloop`
     }
 
+    updatePage = async (Naziya) => {
+        let topLoadingBar = document.querySelector('.topLoadingBar')
+        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${Naziya}&pageSize=${this.props.pageSize}`;
+        topLoadingBar.style.display = 'block'
+        topLoadingBar.style.width = '10%'
+        this.setState({ loading: true })
+        let data = await fetch(url);
+        topLoadingBar.style.width = '50%'
+        let parsedData = await data.json();
+        topLoadingBar.style.width = '70%'
+        this.setState({ articles: parsedData.articles, pagenumber: Naziya, loading: false })
+        topLoadingBar.style.width = '100%'
+        setTimeout(() => {
+            topLoadingBar.style.display = 'none';
+            topLoadingBar.style.width = '0%'
+        }, 1500);
+    }
+
     async componentDidMount() {
         let topLoadingBar = document.querySelector('.topLoadingBar')
-        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=43889aab3ab7429296b748a62e431f32&page=${this.state.pagenumber}&pageSize=${this.props.pageSize}`;
+        topLoadingBar.style.display = 'none';
+        topLoadingBar.style.width = '0%';
+        if (topLoadingBar.checkVisibility() === false) {
+            topLoadingBar.style.display = 'block';
+            topLoadingBar.style.width = '0%';
+        }
+        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.pagenumber}&pageSize=${this.props.pageSize}`;
         topLoadingBar.style.width = '10%'
         this.setState({ loading: true })
         let data = await fetch(url);
@@ -64,47 +88,15 @@ export default class News extends Component {
     }
 
     previousButton = async () => {
-        let topLoadingBar = document.querySelector('.topLoadingBar')
-        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=43889aab3ab7429296b748a62e431f32&page=${this.state.pagenumber - 1}&pageSize=${this.props.pageSize}`;
-        topLoadingBar.style.display = 'block'
-        topLoadingBar.style.width = '10%'
-        this.setState({ loading: true })
-        let data = await fetch(url);
-        topLoadingBar.style.width = '50%'
-        let parsedData = await data.json();
-        topLoadingBar.style.width = '70%'
-        this.setState({ articles: parsedData.articles, pagenumber: this.state.pagenumber - 1, loading: false })
-        topLoadingBar.style.width = '100%'
-        setTimeout(() => {
-            topLoadingBar.style.display = 'none';
-            topLoadingBar.style.width = '0%'
-        }, 1500);
+        this.updatePage(this.state.pageNumber-1)
     }
 
     nextButton = async () => {
-        let topLoadingBar = document.querySelector('.topLoadingBar')
-        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=43889aab3ab7429296b748a62e431f32&page=${this.state.pagenumber + 1}&pageSize=${this.props.pageSize}`;
-        topLoadingBar.style.display = 'block'
-        topLoadingBar.style.width = '10%'
-        this.setState({ loading: true });
-        let data = await fetch(url);
-        topLoadingBar.style.width = '50%'
-        let parsedData = await data.json();
-        topLoadingBar.style.width = '70%'
-        this.setState({ articles: parsedData.articles, pagenumber: this.state.pagenumber + 1, loading: false })
-        topLoadingBar.style.width = '100%'
-        setTimeout(() => {
-            topLoadingBar.style.display = 'none';
-            topLoadingBar.style.width = '0%'
-        }, 1500);
+        this.updatePage(this.state.pagenumber+1)
     }
 
     pageButton = async (pageNumber) => {
-        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=43889aab3ab7429296b748a62e431f32&page=${pageNumber}&pageSize=${this.props.pageSize}`;
-        this.setState({ loading: true })
-        let data = await fetch(url);
-        let parsedData = await data.json();
-        this.setState({ articles: parsedData.articles, loading: false, pagenumber: pageNumber })
+        this.updatePage(pageNumber)
     }
 
     render() {
@@ -132,7 +124,7 @@ export default class News extends Component {
 
                         {this.state.array.map((elements) => {
                             return <>
-                                <button className="btn btn-primary" onClick={() => this.pageButton(elements)}>{elements}</button>
+                                <button key={elements} className="btn btn-primary" onClick={() => this.pageButton(elements)}>{elements}</button>
                             </>
                         })}
 
