@@ -1,5 +1,15 @@
 import { themechange } from "../App"
 
+
+
+document.addEventListener('Blur' , (e) => {
+    document.title = 'Come Back :('
+})
+
+document.addEventListener('Focus' , (e) => {
+    document.title = 'Nazloop'
+})
+
 document.addEventListener('keydown', e => {
     if (e.key.toLowerCase() === 'b' && e.ctrlKey) {
         themechange()

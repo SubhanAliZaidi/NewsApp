@@ -6,6 +6,7 @@
 	--fg-color: white;
     --logo-color:#e1e1e1;
     --blend-mode : color-dodge;
+    --card-border-color : #ffffff2c;
 }
 
 body {
@@ -40,14 +41,17 @@ body {
 }
 
 .cardshadow {
-	box-shadow: 1px 1px 5px var(--cardshadow-color),
-		0px 0px 0px var(--cardshadow-color2);
+	/* box-shadow: 1px 1px 5px var(--cardshadow-color),
+		0px 0px 0px var(--cardshadow-color2); */
 	border-radius: 12px;
+    border: 1px solid var(--card-border-color);
 }
 
 .imgradius {
 	/* box-shadow: 8px 11px 14px #141414, 0px 0px 0px #9f9f9f; */
 	border-radius: 12px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 .buttonradius {
@@ -91,6 +95,20 @@ body {
 	translate: -50% -50%;
 	border-radius: 50%;
 	animation: rotate 3s linear infinite;
+    display:none;
+}
+
+#topRight{
+    width: 200px;
+	background-image: linear-gradient(#ff00ff, #00ffff);
+	aspect-ratio: 1;
+	position: absolute;
+	z-index: -4;
+	top: 9%;
+	right: -11%;
+	translate: -50% -50%;
+	border-radius: 50%;
+	animation: rotate 3s linear infinite;
 }
 
 .blurfg {
@@ -121,8 +139,8 @@ body {
     position: absolute;
     display: flex;
     justify-content: flex-end;
-    right: 0;    
-    top: -10px;
+    right: 0px;    
+    top: -8px;
 }
 
 .testing:hover{
@@ -134,9 +152,15 @@ body {
     transition: all 500ms;
 }
 
+.badgecolor{
+    color: white;
+}
 
-
-
+.hruler{
+    height: 2px;
+    background-color: var(--card-border-color);
+    border:none;
+}
 
 
 

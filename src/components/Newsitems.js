@@ -10,7 +10,7 @@ export default class Newsitems extends Component {
                 <div className="my-4">
                     <div className="card mx-3 darktheme cardshadow" style={{ width: '18rem' }}>
                     <div className="badgecss">
-                    <span className="badge bg-danger text-bg-danger">{source}</span>
+                    <span className="badge bg-danger text-bg-danger badgecolor">{source}</span>
                     </div>
                         <div className="text-center">
                             <img className="img-fluid imgradius" src={imageUrl} alt="preview" style={{ width: '100%', height: '180px' }} />

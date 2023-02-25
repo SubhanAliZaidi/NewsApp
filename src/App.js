@@ -16,6 +16,7 @@ export function themechange(){
     if (rs.getPropertyValue('--bg-color') === 'white') {
         r.style.setProperty('--button-shadow', '#1d1d1d')
         r.style.setProperty('--cardshadow-color2', '#9f9f9f')
+        r.style.setProperty('--card-border-color', '#ffffff2c')
         r.style.setProperty('--cardshadow-color', '#141414')
         r.style.setProperty('--logo-color', '#e1e1e1')
         r.style.setProperty('--blend-mode', 'color-dodge')
@@ -26,6 +27,7 @@ export function themechange(){
         themeimage.classList.remove('themeimage2');
         
     } else {
+        r.style.setProperty('--card-border-color', '#0000002c')
         r.style.setProperty('--button-shadow', 'white')
         r.style.setProperty('--cardshadow-color2', 'white')
         r.style.setProperty('--cardshadow-color', 'white')
