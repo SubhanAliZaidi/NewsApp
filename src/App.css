@@ -15,6 +15,11 @@ body {
 	color: var(--fg-color);
 }
 
+#root{
+    z-index: 5;
+    backdrop-filter: blur(100px);
+}
+
 .darktheme {
 	background-color: transparent;
 	color: var(--fg-color);
@@ -41,21 +46,17 @@ body {
 }
 
 .cardshadow {
-	/* box-shadow: 1px 1px 5px var(--cardshadow-color),
-		0px 0px 0px var(--cardshadow-color2); */
 	border-radius: 12px;
     border: 1px solid var(--card-border-color);
 }
 
 .imgradius {
-	/* box-shadow: 8px 11px 14px #141414, 0px 0px 0px #9f9f9f; */
 	border-radius: 12px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
 
 .buttonradius {
-	/* box-shadow:8px 11px 14px var(--button-shadow), -5px -10px 14px var(--button-shadow); */
 	border-radius: 8px;
 }
 
@@ -70,7 +71,7 @@ body {
 	font-size: 35px;
 	position: absolute;
 	letter-spacing: 5px;
-	z-index: -2;
+	z-index: 4;
 	top: 15px;
 	left: 17px;
 	/* color: rgb(255, 210, 210); */
@@ -109,15 +110,6 @@ body {
 	translate: -50% -50%;
 	border-radius: 50%;
 	animation: rotate 3s linear infinite;
-}
-
-.blurfg {
-	width: 100%;
-	height: 4775px;
-	position: absolute;
-	backdrop-filter: blur(100px);
-	z-index: -3;
-	background-color: transparent;
 }
 
 @keyframes rotate {

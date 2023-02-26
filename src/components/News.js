@@ -11,7 +11,7 @@ export default class News extends Component {
     static defaultProps = {
         category: 'general',
         country: 'in',
-        pageSize: 15,
+        pageSize: 20,
     };
 
     static propsTypes = {
@@ -82,31 +82,30 @@ export default class News extends Component {
         }, 1500);
     }
 
-    async componentDidUpdate() {
-        let bdy = document.querySelector('#root');
-        let heig = bdy.offsetHeight;
-        let blurfg = document.querySelector('.blurfg');
-        blurfg.style.height = `${heig}px`;
-    }
+    // async componentDidUpdate() {
+    //     let bdy = document.querySelector('#root');
+    //     let heig = bdy.offsetHeight;
+    //     let blurfg = document.querySelector('.blurfg');
+    //     blurfg.style.height = `${heig}px`;
+    // }
 
-    // previousButton = async () => {
-    //     this.updatePage(this.state.pageNumber - 1);
-    // };
+    previousButton = async () => {
+        this.updatePage(this.state.pageNumber - 1);
+    };
 
-    // nextButton = async () => {
-    //     this.updatePage(this.state.pagenumber + 1);
-    // };
+    nextButton = async () => {
+        this.updatePage(this.state.pagenumber + 1);
+    };
 
-    // pageButton = async (pageNumber) => {
-    //     this.updatePage(pageNumber);
-    // };
+    pageButton = async (pageNumber) => {
+        this.updatePage(pageNumber);
+    };
 
     fetchMoreData = async () => {
-        this.setState({ pagenumber: this.state.pagenumber + 1 });
-        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.pagenumber}&pageSize=${this.props.pageSize}`;
+        const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.pagenumber+1}&pageSize=${this.props.pageSize}`;
         let data = await fetch(url);
         let parsedData = await data.json();
-        this.setState({ articles: this.state.articles.concat(parsedData.articles) });
+        this.setState({ articles: this.state.articles.concat(parsedData.articles) , pagenumber:this.state.pagenumber+1});
     };
 
     render() {
@@ -121,6 +120,7 @@ export default class News extends Component {
                     dataLength={this.state.articles.length}
                     hasMore={this.state.articles.length !== this.state.totalResults}
                     next={this.fetchMoreData}
+                    loader = {<Spinner/>}
                 >
                     {<div className="container-fluid" style={{ maxWidth: '1000px' }}>
                         <div className="row">
@@ -133,10 +133,9 @@ export default class News extends Component {
                             })}
                         </div>
                     </div>}
-                    {this.state.loading && <Spinner />}
                 </InfiniteScroll>
 
-                {/* <div className="container-fluid text-center mx-auto my-3">
+                <div className="container-fluid text-center mx-auto my-3">
                     <div className="btn-group">
                         <button disabled={this.state.pagenumber === 1} className="btn btn-secondary" onClick={this.previousButton}>Previous</button>
 
@@ -148,7 +147,7 @@ export default class News extends Component {
 
                         <button disabled={this.state.pagenumber === Math.ceil(this.state.totalResults / 15 || this.state.totalResults !== 0)} type="button" className="btn btn-secondary" onClick={this.nextButton}>Next</button>
                     </div>
-                </div> */}
+                </div>
             </>
         );
     }
