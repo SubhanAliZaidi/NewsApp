@@ -1,4 +1,4 @@
-// Naziya = "naziya"
+// Naziya = 'naziya'
 import React, { Component } from 'react'
 
 export default class Newsitems extends Component {

@@ -1,3 +1,4 @@
+// Naziya = 'naziya'
 import React, { Component } from 'react'
 import gif from './Image/loading.gif'
 

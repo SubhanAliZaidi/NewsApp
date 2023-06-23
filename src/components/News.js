@@ -1,4 +1,4 @@
-// Naziya = "naziya"
+// Naziya = 'naziya'
 import React, { Component } from 'react';
 import Newsitems from './Newsitems';
 import image from './Image/img.jpg';
